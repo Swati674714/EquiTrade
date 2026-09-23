@@ -1,0 +1,272 @@
+/* ============================================
+   TRADE ACTION WINDOW (BUY/SELL MODAL)
+   ============================================ */
+
+.trade-window {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 16px;
+  padding: 24px;
+  width: 400px;
+  max-width: 90vw;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  animation: modalPop 0.2s ease-out;
+}
+
+@keyframes modalPop {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Backdrop overlay behind the modal */
+.trade-window::before {
+  content: "";
+  position: fixed;
+  top: -100vh;
+  left: -100vw;
+  width: 300vw;
+  height: 300vh;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+}
+
+/* ============================================
+   HEADER (Mode + Symbol + LTP)
+   ============================================ */
+
+.trade-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #334155;
+}
+
+.trade-head strong {
+  font-size: 18px;
+  font-weight: 700;
+  color: #f1f5f9;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.trade-head span {
+  font-size: 14px;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+/* ============================================
+   MARKET / LIMIT TOGGLE
+   ============================================ */
+
+.order-type-toggle {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  background-color: #0a0f1f;
+  padding: 4px;
+  border-radius: 10px;
+}
+
+.order-type-toggle button {
+  flex: 1;
+  height: 40px;
+  border: none;
+  background: transparent;
+  color: #94a3b8;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+
+.order-type-toggle button:hover {
+  color: #f1f5f9;
+}
+
+.order-type-toggle button.active {
+  background-color: #0066cc;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 102, 204, 0.4);
+}
+
+/* ============================================
+   QTY / PRICE INPUTS
+   ============================================ */
+
+.regular-order .inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.regular-order fieldset {
+  border: 1px solid #334155;
+  border-radius: 10px;
+  padding: 8px 12px 10px;
+  margin: 0;
+}
+
+.regular-order legend {
+  font-size: 11px;
+  font-weight: 600;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0 6px;
+}
+
+.regular-order input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: #f1f5f9;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 4px 0;
+  outline: none;
+}
+
+.regular-order input:disabled {
+  color: #64748b;
+}
+
+/* ============================================
+   CHARGES BREAKDOWN BOX
+   ============================================ */
+
+.charges-box {
+  background-color: #0a0f1f;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+}
+
+.charges-box p {
+  font-size: 12px;
+  color: #94a3b8;
+  margin: 0 0 6px 0;
+  line-height: 1.5;
+}
+
+.charges-box p:last-child {
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: #f1f5f9;
+  padding-top: 8px;
+  border-top: 1px dashed #334155;
+}
+
+/* ============================================
+   ERROR MESSAGE
+   ============================================ */
+
+.field-error {
+  color: #ef4444;
+  font-size: 13px;
+  font-weight: 500;
+  background-color: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 16px;
+}
+
+/* ============================================
+   BUTTONS FOOTER
+   ============================================ */
+
+.trade-window .buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.trade-window .buttons > span {
+  font-size: 11px;
+  color: #64748b;
+  text-align: center;
+}
+
+.trade-window .buttons > div {
+  display: flex;
+  gap: 12px;
+}
+
+.trade-window .buttons .btn {
+  flex: 1;
+  height: 46px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+
+.trade-window .buttons .btn-blue {
+  background-color: #10b981;
+  color: #ffffff;
+}
+
+.trade-window .buttons .btn-blue:hover {
+  background-color: #059669;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+}
+
+.trade-window .buttons .btn-red {
+  background-color: #ef4444;
+  color: #ffffff;
+}
+
+.trade-window .buttons .btn-red:hover {
+  background-color: #dc2626;
+  box-shadow: 0 4px 14px rgba(239, 68, 68, 0.35);
+}
+
+.trade-window .buttons .btn-grey {
+  background-color: #334155;
+  color: #f1f5f9;
+}
+
+.trade-window .buttons .btn-grey:hover {
+  background-color: #475569;
+}
+
+.trade-window .buttons .btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 480px) {
+  .trade-window {
+    width: 92vw;
+    padding: 18px;
+  }
+
+  .regular-order .inputs {
+    grid-template-columns: 1fr;
+  }
+}
+ 

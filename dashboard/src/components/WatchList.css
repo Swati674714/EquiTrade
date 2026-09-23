@@ -1,0 +1,344 @@
+/* ============================================
+   WATCHLIST CONTAINER
+   ============================================ */
+
+.watchlist-container {
+  background-color: #0f172a;
+  border-right: 1px solid #334155;
+  height: calc(100vh - 70px) !important;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ============================================
+   SEARCH BAR
+   ============================================ */
+
+.search-container {
+  padding: 16px;
+  border-bottom: 1px solid #334155;
+  background-color: #0a0f1f;
+}
+
+.search-container {
+  position: relative;
+  display: block;
+}
+
+.search-container .search {
+  width: 100%;
+  height: 44px;
+  border: 1px solid #334155;
+  background-color: #131c2e;
+  color: #f1f5f9;
+  border-radius: 12px;
+  padding: 0 60px 0 40px;
+  font-size: 13px;
+  font-weight: 500;
+  outline: none;
+  box-sizing: border-box;
+  transition: all 0.2s ease-out;
+}
+
+.search-container .search:hover {
+  border-color: #475569;
+}
+
+.search-container .search:focus {
+  border-color: #0066cc;
+  background-color: #0f172a;
+  box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.15);
+}
+
+.search-container .search::placeholder {
+  color: #64748b;
+  font-weight: 400;
+}
+
+/* Search icon (using CSS only, no extra markup needed) */
+.search-container::before {
+  content: "";
+  position: absolute;
+  left: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  border: 2px solid #64748b;
+  border-radius: 50%;
+  pointer-events: none;
+  transition: border-color 0.2s ease-out;
+}
+
+.search-container::after {
+  content: "";
+  position: absolute;
+  left: 44px;
+  top: 63%;
+  width: 7px;
+  height: 2px;
+  background-color: #64748b;
+  transform: rotate(45deg);
+  border-radius: 1px;
+  pointer-events: none;
+  transition: background-color 0.2s ease-out;
+}
+
+.search-container:focus-within::before {
+  border-color: #0066cc;
+}
+
+.search-container:focus-within::after {
+  background-color: #0066cc;
+}
+
+.search-container .counts {
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748b;
+  background-color: #1e293b;
+  padding: 3px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+/* ============================================
+   STOCK LIST
+   ============================================ */
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: scroll !important;
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+}
+
+.list li {
+  border-bottom: 1px solid #1e293b;
+  transition: background-color 0.15s ease-out;
+}
+
+.list li:hover {
+  background-color: #1e293b;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  cursor: pointer;
+}
+
+.item p {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.item p.up {
+  color: #10b981;
+}
+
+.item p.down {
+  color: #ef4444;
+}
+
+.itemInfo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.itemInfo .percent {
+  font-size: 12px;
+  font-weight: 600;
+  color: #94a3b8;
+  min-width: 62px;
+  text-align: right;
+}
+
+.itemInfo svg.up {
+  color: #10b981;
+  font-size: 18px !important;
+}
+
+.itemInfo svg.down {
+  color: #ef4444;
+  font-size: 18px !important;
+}
+
+.itemInfo .price {
+  font-size: 14px;
+  font-weight: 700;
+  color: #f1f5f9;
+  min-width: 70px;
+  text-align: right;
+}
+
+/* ============================================
+   BUY / SELL / ACTION BUTTONS (on hover row)
+   ============================================ */
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  padding: 0 16px 14px;
+}
+
+.actions > span {
+  display: flex;
+  gap: 8px;
+}
+
+.actions button {
+  height: 32px;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease-out;
+  padding: 0 14px;
+}
+
+.actions button.buy {
+  background-color: #10b981;
+  color: #ffffff;
+  flex: 1;
+}
+
+.actions button.buy:hover {
+  background-color: #059669;
+}
+
+.actions button.sell {
+  background-color: #ef4444;
+  color: #ffffff;
+  flex: 1;
+}
+
+.actions button.sell:hover {
+  background-color: #dc2626;
+}
+
+.actions button.action {
+  background-color: #334155;
+  color: #f1f5f9;
+  width: 32px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+}
+
+.actions button.action:hover {
+  background-color: #475569;
+}
+
+.actions button.action .icon {
+  font-size: 16px !important;
+}
+
+.actions .alert-inline {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.actions .alert-inline input {
+  flex: 1;
+  height: 32px;
+  border: 1px solid #334155;
+  background-color: #0a0f1f;
+  color: #f1f5f9;
+  border-radius: 6px;
+  padding: 0 10px;
+  font-size: 12px;
+  outline: none;
+}
+
+.actions .alert-inline button {
+  background-color: #0066cc;
+  color: #ffffff;
+  flex: none;
+  padding: 0 12px;
+}
+
+.actions .alert-inline button:hover {
+  background-color: #004499;
+}
+
+/* ============================================
+   SKELETON LOADER
+   ============================================ */
+
+.skeleton-list {
+  padding: 16px;
+}
+
+.skeleton-list::before {
+  content: "";
+  display: block;
+  height: 400px;
+  background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: 8px;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ============================================
+   CHART PANEL (mini analytics)
+   ============================================ */
+
+.chart-panel {
+  padding: 16px;
+  border-top: 1px solid #334155;
+  background-color: #0a0f1f;
+}
+/* ============================================
+   CHART SECTION (below stock list)
+   ============================================ */
+
+.chart-section {
+  padding: 20px 16px;
+  border-top: 1px solid #334155;
+  background-color: #0a0f1f;
+}
+
+.chart-section h4 {
+  font-size: 13px;
+  font-weight: 600;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.chart-wrapper {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chart-wrapper canvas {
+  max-width: 100% !important;
+  max-height: 280px !important;
+}
