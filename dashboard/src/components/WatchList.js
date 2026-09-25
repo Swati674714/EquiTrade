@@ -8,7 +8,6 @@ import {
 } from "@mui/icons-material";
 import toast from "react-hot-toast";
 import GeneralContext from "./GeneralContext";
-import { DoughnutChart } from "./DoughnoutChart";
 import CandleChart from "./CandleChart";
 import { usePrices } from "../context/SocketContext";
 import api from "../api/axios";
@@ -37,19 +36,6 @@ const WatchList = () => {
       })
       .filter((row) => row.symbol.toLowerCase().includes(query.toLowerCase()));
   }, [rows, prices, query]);
-
-  const chartData = {
-    labels: merged.map((s) => s.symbol),
-    datasets: [
-      {
-        label: "Price",
-        data: merged.map((s) => s.price),
-        backgroundColor: ["#00d09c55", "#4184f355", "#ff4d4f55", "#f5c54255", "#9b8cff55", "#4dd4c055"],
-        borderColor: ["#00d09c", "#4184f3", "#ff4d4f", "#f5c542", "#9b8cff", "#4dd4c0"],
-        borderWidth: 1,
-      },
-    ],
-  };
 
   return (
     <div className="watchlist-container">
